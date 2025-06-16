@@ -17,6 +17,33 @@
       color: white;
       padding: 1.5rem;
     }
+    form {
+      background: white;
+      padding: 2rem;
+      max-width: 500px;
+      margin: 2rem auto;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    form input {
+      width: 90%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+    form button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background-color: #0056b3;
+    }
     img {
       max-width: 90%;
       margin-top: 2rem;
@@ -37,6 +64,14 @@
     <h2>2025 Cirrus SR22 G7 Turbo</h2>
   </header>
 
+  <form onsubmit="return handleSubmit(event)">
+    <h3>Contact the Seller</h3>
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <input type="tel" id="phone" placeholder="Your Phone Number" required>
+    <button type="submit">Send Email</button>
+  </form>
+
   <img src="n404sb.jpg" alt="N404SB Photo">
 
   <p>
@@ -44,7 +79,28 @@
   </p>
 
   <p>
-    📩 Contact: <a href="mailto:chris@hawthornevc.com">chris@hawthornevc.com</a>
+    📸 <strong>More Photos:</strong>  
+    <a href="https://www.dropbox.com/scl/fo/xk8d34msvj3a9z96l3i6x/ABc_HeIM_D9m8E_ZPX74Vs4?rlkey=1a8078l3ppj4vbl7mmwbnvd67&st=aejvlc4i&dl=0" target="_blank">
+      View Dropbox Folder
+    </a>  
+    <br><small>Password: <code>404sb</code></small>
   </p>
+
+  <p>
+    📩 Or email: <a href="mailto:chris@hawthornevc.com">chris@hawthornevc.com</a>
+  </p>
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById(\"name\").value;
+      const email = document.getElementById(\"email\").value;
+      const phone = document.getElementById(\"phone\").value;
+
+      const mailtoLink = `mailto:chris@hawthornevc.com?subject=N404SB Inquiry from ${name}&body=Name: ${name}%0DEmail: ${email}%0DPhone: ${phone}`;
+      window.location.href = mailtoLink;
+      return false;
+    }
+  </script>
 </body>
 </html>
